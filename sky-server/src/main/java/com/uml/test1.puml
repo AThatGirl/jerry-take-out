@@ -1,0 +1,57 @@
+@startuml
+
+class User {
+  - userId: int
+  - username: string
+  - email: string
+  + register()
+  + login()
+  + updateProfile()
+}
+
+class Restaurant {
+  - restaurantId: int
+  - name: string
+  - menu: List<MenuItem>
+  + applyForEntry()
+  + manageMenu()
+  + processOrder()
+}
+
+class MenuItem {
+  - itemId: int
+  - name: string
+  - price: float
+}
+
+class Order {
+  - orderId: int
+  - user: User
+  - restaurant: Restaurant
+  - items: List<MenuItem>
+  - status: string
+  + placeOrder()
+  + trackOrder()
+}
+
+class PaymentGateway {
+  + processPayment()
+}
+
+class DeliveryService {
+  + assignOrder()
+  + updateDeliveryStatus()
+}
+
+class RecommendationSystem {
+  + generateRecommendations()
+}
+
+User --|> Order
+Restaurant --|> MenuItem
+User -- PaymentGateway
+Order -- PaymentGateway
+Order -- DeliveryService
+RecommendationSystem --|> Order
+
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 下单模块 {
+  frame 浏览餐厅和菜单界面 {
+    rectangle 餐厅列表
+    rectangle 菜单
+    rectangle 筛选按钮
+    rectangle 搜索框
+    rectangle 加入购物车按钮
+    rectangle 购物车按钮
+    餐厅列表 -[hidden]- 筛选按钮
+    菜单 -[hidden]- 搜索框
+    加入购物车按钮 -[hidden]- 购物车按钮
+  }
+  frame 购物车界面 {
+    rectangle 菜品列表
+    rectangle 修改数量按钮
+    rectangle 删除按钮
+    rectangle 结算按钮
+    rectangle 返回按钮
+    菜品列表 -[hidden]- 修改数量按钮
+    删除按钮 -[hidden]- 结算按钮
+    返回按钮 -[hidden]- 菜品列表
+  }
+  frame 订单确认界面 {
+    rectangle 订单详情
+    rectangle 收货地址
+    rectangle 联系方式
+    rectangle 支付方式
+    rectangle 支付按钮
+    rectangle 取消按钮
+    订单详情 -[hidden]- 收货地址
+    联系方式 -[hidden]- 支付方式
+    支付按钮 -[hidden]- 取消按钮
+  }
+  frame 支付界面 {
+    rectangle 支付信息
+    rectangle 支付平台
+    rectangle 完成按钮
+    rectangle 返回按钮
+    支付信息 -[hidden]- 支付平台
+    完成按钮 -[hidden]- 返回按钮
+  }
+  浏览餐厅和菜单界面 ..> 购物车界面 : 点击购物车按钮
+  购物车界面 ..> 浏览餐厅和菜单界面 : 点击返回按钮
+  购物车界面 ..> 订单确认界面 : 点击结算按钮
+  订单确认界面 ..> 支付界面 : 点击支付按钮
+  支付界面 ..> 订单确认界面 : 点击返回按钮
+  支付界面 ..> 订单确认界面 : 点击完成按钮
+}
+@enduml

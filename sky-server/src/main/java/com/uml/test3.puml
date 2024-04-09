@@ -1,0 +1,15 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 购物车模块 {
+  frame 购物车界面 {
+    rectangle 菜品列表
+    rectangle 修改数量按钮
+    rectangle 删除按钮
+    rectangle 结算按钮
+    rectangle 返回按钮
+  }
+  菜品列表 -[hidden]- 修改数量按钮
+  删除按钮 -[hidden]- 结算按钮
+  返回按钮 -[hidden]- 菜品列表
+}
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 员工管理模块 {
+  frame 员工列表页面 {
+    rectangle 员工列表
+    rectangle 搜索框
+    rectangle 筛选按钮
+    rectangle 查看详情按钮
+    员工列表 -[hidden]- 查看详情按钮
+    搜索框 -[hidden]- 筛选按钮
+  }
+  frame 员工详情页面 {
+    rectangle 员工详情
+    rectangle 编辑按钮
+    rectangle 删除按钮
+    员工详情 -[hidden]- 编辑按钮
+    员工详情 -[hidden]- 删除按钮
+  }
+  frame 员工编辑页面 {
+    rectangle 编辑表单
+    rectangle 保存按钮
+    rectangle 取消按钮
+    编辑表单 -[hidden]- 保存按钮
+    编辑表单 -[hidden]- 取消按钮
+  }
+  frame 员工添加页面 {
+    rectangle 添加表单
+    rectangle 添加按钮
+    rectangle 取消按钮
+    添加表单 -[hidden]- 添加按钮
+    添加表单 -[hidden]- 取消按钮
+  }
+  员工列表页面 ..> 员工详情页面 : 点击查看详情按钮
+  员工详情页面 ..> 员工列表页面 : 点击返回按钮
+  员工列表页面 ..> 员工编辑页面 : 点击编辑按钮
+  员工编辑页面 ..> 员工列表页面 : 完成编辑
+  员工列表页面 ..> 员工添加页面 : 点击添加按钮
+  员工添加页面 ..> 员工列表页面 : 完成添加
+  员工添加页面 ..> 员工列表页面 : 取消添加
+}
+@enduml

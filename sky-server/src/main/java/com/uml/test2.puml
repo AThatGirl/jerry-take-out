@@ -1,0 +1,61 @@
+@startuml
+
+class User {
+  + register()
+  + login()
+  + updateProfile()
+}
+
+class Restaurant {
+  + applyForEntry()
+  + manageMenu()
+  + processOrder()
+}
+
+class Order {
+  + placeOrder()
+  + trackOrder()
+}
+
+class Payment {
+  + processPayment()
+}
+
+class Delivery {
+  + assignOrder()
+  + updateDeliveryStatus()
+}
+
+class Feedback {
+  + provideRestaurantFeedback()
+  + provideDeliveryFeedback()
+}
+
+class Recommendation {
+  + generatePersonalizedRecommendation()
+  + optimizeRecommendationAlgorithm()
+}
+
+class SystemManagement {
+  + logSystemActivity()
+  + monitorSystemPerformance()
+  + performMaintenance()
+}
+
+User -- Order
+Restaurant -- Order
+User --|> Payment
+Order --|> Payment
+Order --|> Delivery
+User -- Feedback
+Delivery -- Feedback
+Restaurant -- Feedback
+User --|> Recommendation
+Recommendation --|> Recommendation
+
+User -- SystemManagement
+Restaurant -- SystemManagement
+Delivery -- SystemManagement
+Recommendation -- SystemManagement
+
+@enduml

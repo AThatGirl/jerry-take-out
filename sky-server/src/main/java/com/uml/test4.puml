@@ -1,0 +1,38 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 订单管理模块 {
+  frame 订单列表页面 {
+    rectangle 订单列表
+    rectangle 搜索框
+    rectangle 筛选按钮
+    rectangle 查看详情按钮
+    订单列表 -[hidden]- 查看详情按钮
+    搜索框 -[hidden]- 筛选按钮
+  }
+  frame 订单详情页面 {
+    rectangle 订单详情
+    rectangle 取消订单按钮
+    rectangle 确认收货按钮
+    订单详情 -[hidden]- 取消订单按钮
+    订单详情 -[hidden]- 确认收货按钮
+  }
+  frame 订单处理页面 {
+    rectangle 待处理订单列表
+    rectangle 接单按钮
+    rectangle 配送按钮
+    rectangle 完成按钮
+    待处理订单列表 -[hidden]- 接单按钮
+    待处理订单列表 -[hidden]- 配送按钮
+    待处理订单列表 -[hidden]- 完成按钮
+  }
+  frame 订单统计页面 {
+    rectangle 统计图表
+    rectangle 报表展示
+  }
+  订单列表页面 ..> 订单详情页面 : 点击查看详情按钮
+  订单详情页面 ..> 订单列表页面 : 点击返回按钮
+  订单列表页面 ..> 订单处理页面 : 点击处理订单按钮
+  订单处理页面 ..> 订单列表页面 : 完成订单处理
+  订单处理页面 ..> 订单详情页面 : 查看订单详情
+  订单列表页面 ..> 订单统计页面 : 点击统计按钮
+@enduml

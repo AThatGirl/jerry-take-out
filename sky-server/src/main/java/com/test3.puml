@@ -1,0 +1,57 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 数据统计模块 {
+  frame 数据源选择界面 {
+    rectangle 数据源列表
+    rectangle 筛选按钮
+    rectangle 搜索框
+    rectangle 选择按钮
+    rectangle 下一步按钮
+    数据源列表 -[hidden]- 筛选按钮
+    搜索框 -[hidden]- 选择按钮
+    下一步按钮 -[hidden]- 数据源列表
+  }
+  frame 数据集编辑界面 {
+    rectangle 数据源列表
+    rectangle 修改按钮
+    rectangle 删除按钮
+    rectangle 保存按钮
+    rectangle 取消按钮
+    数据源列表 -[hidden]- 修改按钮
+    删除按钮 -[hidden]- 保存按钮
+    取消按钮 -[hidden]- 数据源列表
+  }
+  frame 数据分析界面 {
+    rectangle 数据集列表
+    rectangle 筛选按钮
+    rectangle 搜索框
+    rectangle 分析按钮
+    rectangle 新建按钮
+    数据集列表 -[hidden]- 筛选按钮
+    搜索框 -[hidden]- 分析按钮
+    新建按钮 -[hidden]- 数据集列表
+  }
+  frame 数据分析页面 {
+    rectangle 数据表格
+    rectangle 统计图表
+    rectangle 统计指标
+    rectangle 统计方法
+    rectangle 参数
+    rectangle 维度
+    rectangle 度量
+    rectangle 导出按钮
+    rectangle 分享按钮
+    数据表格 -[hidden]- 统计图表
+    统计指标 -[hidden]- 统计方法
+    参数 -[hidden]- 维度
+    度量 -[hidden]- 导出按钮
+    分享按钮 -[hidden]- 数据表格
+  }
+  数据源选择界面 ..> 数据集编辑界面 : 点击下一步按钮
+  数据集编辑界面 ..> 数据源选择界面 : 点击取消按钮
+  数据集编辑界面 ..> 数据分析界面 : 点击保存按钮
+  数据分析界面 ..> 数据源选择界面 : 点击新建按钮
+  数据分析界面 ..> 数据分析页面 : 点击分析按钮
+  数据分析页面 ..> 数据分析界面 : 点击返回按钮
+}
+@enduml

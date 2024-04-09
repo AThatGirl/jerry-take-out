@@ -1,0 +1,40 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 外卖平台系统 {
+  package MVC {
+    package Model {
+      class 用户
+      class 订单
+      class 商品
+      class 评价
+      class 优惠
+    }
+    package View {
+      class 主页面
+      class 订单页面
+      class 评价页面
+      class 优惠页面
+    }
+    package Controller {
+      class 主控制器
+      class 订单控制器
+      class 评价控制器
+      class 优惠控制器
+    }
+  }
+  package 分层架构 {
+    package 表现层 {
+      MVC.View ..> 表现层 : 提供
+      表现层 ..> MVC.Controller : 调用
+    }
+    package 业务逻辑层 {
+      MVC.Controller ..> 业务逻辑层 : 调用
+      业务逻辑层 ..> MVC.Model : 操作
+    }
+    package 数据访问层 {
+      MVC.Model ..> 数据访问层 : 调用
+      数据访问层 ..> 数据库 : 操作
+    }
+  }
+}
+@enduml

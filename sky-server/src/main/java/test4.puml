@@ -1,0 +1,30 @@
+@startuml
+skinparam packageStyle rectangle
+rectangle 外卖平台系统 {
+  node "Web服务器" as web {
+    component "Web应用" as webapp
+    artifact "Web页面" as webpage
+  }
+  node "数据库服务器" as db {
+    component "数据库管理系统" as dbms
+    artifact "数据库文件" as dbfile
+  }
+  node "支付平台" as pay {
+    component "支付接口" as payapi
+  }
+  node "地图服务" as map {
+    component "地图接口" as mapapi
+  }
+  node "手机" as phone {
+    component "浏览器" as browser
+    component "App" as app
+  }
+  webapp ..> dbms : 连接
+  webapp ..> payapi : 调用
+  webapp ..> mapapi : 调用
+  webpage .> webapp : 部署
+  dbfile .> dbms : 部署
+  browser ..> webpage : 访问
+  app ..> webpage : 访问
+}
+@enduml
